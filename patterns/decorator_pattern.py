@@ -11,7 +11,7 @@ class Hero:
 
 
 # 装饰类
-class Skill(Hero):
+class AddSkill(Hero):
     def pick_hero(self, hero):
         self._hero = hero
 
@@ -20,13 +20,13 @@ class Skill(Hero):
         self._hero.learn_skill()
 
 
-class SkillQ(Skill):
+class SkillQ(AddSkill):
     def learn_skill(self):
         print("学习Q技能")
         self._hero.learn_skill()
 
 
-class SkillW(Skill):
+class SkillW(AddSkill):
     def learn_skill(self):
         print("学习W技能")
         self._hero.learn_skill()
