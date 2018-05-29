@@ -8,7 +8,7 @@ __doc__ = """单例模式（Singleton ）是 Java 中最简单的设计模式之
           """
 
 
-# 类方法
+# 类方法实现单例
 class Singleton1:
     _instance = None
 
@@ -18,7 +18,7 @@ class Singleton1:
         return cls._instance
 
 
-# 单例模式
+# 修饰器实现单例
 def singleton(cls):
     instances = {}
 
@@ -35,7 +35,7 @@ class Singleton2:
     pass
 
 
-# 元类
+# 元类实现
 class Singleton3(type):
     _instances = {}
 
