@@ -52,3 +52,6 @@ if __name__ == '__main__':
     factory = PetFactory.get_factory('dog')
     pet = factory().get_pet()
     pet().roar()
+
+    # output
+    # 汪汪汪

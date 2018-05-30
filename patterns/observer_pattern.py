@@ -36,3 +36,8 @@ class Subject:
 class Observer:
     def notify(self):
         print("{} updating...".format('Observer'))
+
+
+class ClientObserver1(Observer):
+    def notify(self):
+        print("{} updating...".format('Observer'))
