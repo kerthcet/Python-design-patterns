@@ -28,31 +28,30 @@ def run(time):
 
 # -------------------------------- 类实现 --------------------------------
 
-# 装饰类
-class Skill:
-    def __init__(self, name):
-        self._name = name
+class Location:
+    def __init__(self, city):
+        self._city = city
 
-    def learn_skill(self):
-        print("learn skill: {}".format(self._name))
-
-
-class SkillQ(Skill):
-    def __init__(self, skill):
-        self._skill = skill
-
-    def learn_skill(self):
-        print("learning Q skill...")
-        return self._skill.learn_skill()
+    def show(self):
+        return self._city
 
 
-class SkillW(Skill):
-    def __init__(self, skill):
-        self._skill = skill
+class Country(Location):
+    def __init__(self, location):
+        self._location = location
 
-    def learn_skill(self):
-        print("learning W skill...")
-        return self._skill.learn_skill()
+    def show(self):
+        print("{} include ".format("China"), end='')
+        return self._location.show()
+
+
+class Continent(Location):
+    def __init__(self, location):
+        self._location = location
+
+    def show(self):
+        print("{} include ".format('Asia'), end='')
+        return self._location.show()
 
 
 if __name__ == '__main__':
@@ -60,13 +59,9 @@ if __name__ == '__main__':
     # output: Decorator-Pattern loging...
     #         run at 2018-05-29
 
-    skill = Skill('Learn two skills...')
-    skill.learn_skill()
-    # output: learn skill: Learn two skills...
-
-    q = SkillQ(skill)
-    w = SkillW(q)
-    w.learn_skill()
-    # output: learning W skill...
-    #         learning Q skill...
-    #         learn skill: Learn two skills...
+    location = Location('ShangHai')
+    location_detail = Continent(Country(location))
+    print(location.show())
+    print(location_detail.show())
+    # output: ShangHai
+    #         Asia include China include ShangHai
