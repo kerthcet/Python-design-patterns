@@ -54,13 +54,15 @@ class SkillW(Skill):
         print("learning W skill...")
         return self._skill.learn_skill()
 
+
 if __name__ == '__main__':
     run('2018-05-29')
     # output: Decorator-Pattern loging...
     #         run at 2018-05-29
 
     skill = Skill('Learn two skills...')
-    skill.learn_skill() # output: learn skill: Learn two skills...
+    skill.learn_skill()
+    # output: learn skill: Learn two skills...
 
     q = SkillQ(skill)
     w = SkillW(q)
