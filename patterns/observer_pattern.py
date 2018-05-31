@@ -10,15 +10,17 @@ __doc__ = """观察者模式(Observer Pattern)：定义对象间的一种一对�
 import datetime
 
 
-# 订阅主题
+# Subject 对象带有绑定观察者到 Client 对象和从 Client 对象解绑观察者的方法。
 class Subject:
     def __init__(self):
         self._observers = []
 
     def subscribe(self, observer):
+        print("{} 订阅".format(observer.name))
         self._observers.append(observer)
 
     def unsubscribe(self, observer):
+        print("{} 取消订阅".format(observer.name))
         self._observers.remove(observer)
 
     def push(self):
@@ -27,7 +29,7 @@ class Subject:
             observer.notify()
 
 
-class Data(Subject):
+class Client(Subject):
     def __init__(self, title='blank'):
         super().__init__()
         self._title = title
@@ -43,12 +45,18 @@ class Data(Subject):
 
 
 class Observer1:
+    def __init__(self):
+        self.name = 'observer1'
+
     def notify(self):
         print(str(datetime.datetime.now()), end=', ')
         print("{} updating...".format('Observer1'))
 
 
 class Observer2:
+    def __init__(self):
+        self.name = 'observer2'
+
     def notify(self):
         print(str(datetime.datetime.now()), end=', ')
         print("{} updating...".format('Observer2'))
@@ -57,17 +65,17 @@ class Observer2:
 if __name__ == '__main__':
     observer1 = Observer1()
     observer2 = Observer2()
-    data = Data()
+    client = Client()
 
-    data.subscribe(observer1)
-    data.subscribe(observer2)
+    client.subscribe(observer1)
+    client.subscribe(observer2)
 
-    data.title = '开始订阅'
+    client.title = '开始订阅'
     # output: 开始订阅。。。
     #         2018-05-31 01:56:07.312823, Observer1 updating...
     #         2018-05-31 01:56:07.312847, Observer2 updating...
 
-    data.unsubscribe(observer1)
-    data.title = 'observer1取消订阅'
+    client.unsubscribe(observer1)
+    client.title = 'observer1取消订阅'
     # output: 开始订阅。。。
     #         2018-05-31 01:56:07.312860, Observer2 updating...
