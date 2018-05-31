@@ -62,6 +62,6 @@ if __name__ == '__main__':
     location = Location('ShangHai')
     location_detail = Continent(Country(location))
     print(location.show())
-    print(location_detail.show())
     # output: ShangHai
-    #         Asia include China include ShangHai
+    print(location_detail.show())
+    # output: Asia include China include ShangHai
